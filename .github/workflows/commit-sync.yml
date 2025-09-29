@@ -15,12 +15,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GH_TOKEN }}
         fetch-depth: 0
     - name: Run commit sync
       env:
-        GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
-        REPOSITORY: ${{ secrets.REPOSITORY }}
-        GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-        GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}
+        GL_USERNAME: ${{ secrets.GL_USERNAME }}
+        GH_REPOSITORY: ${{ secrets.GH_REPOSITORY }}
+        GH_USERNAME: ${{ secrets.GH_USERNAME }}
+        GH_EMAIL: ${{ secrets.GH_EMAIL }}
       run: ./script.sh

@@ -19,20 +19,20 @@ The GitHub Action will:
 1. Fork this repository
 2. Go to your fork's Settings → Secrets and variables → Actions
 3. Add the following secrets:
-   - `GITLAB_USERNAME`: Your GitLab username
-   - `REPOSITORY`: The Git repository URL to sync to (e.g., `https://github.com/username/repo.git`)
-   - `GITHUB_USERNAME`: Your GitHub username
-   - `GITHUB_EMAIL`: Your GitHub email address
+   - `GL_USERNAME`: Your GitLab username
+   - `GH_REPOSITORY`: The Git repository URL to sync to (e.g., `https://github.com/username/repo.git`)
+   - `GH_USERNAME`: Your GitHub username
+   - `GH_EMAIL`: Your GitHub email address
 
 ## Manual Usage
 
 You can also run the script manually:
 
 ```bash
-export GITLAB_USERNAME="your-gitlab-username"
-export REPOSITORY="https://github.com/username/repo.git"
-export GITHUB_USERNAME="your-github-username"
-export GITHUB_EMAIL="your-github-email@example.com"
+export GL_USERNAME="your-gitlab-username"
+export GH_REPOSITORY="https://github.com/username/repo.git"
+export GH_USERNAME="your-github-username"
+export GH_EMAIL="your-github-email@example.com"
 
 ./script.sh
 ```
