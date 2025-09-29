@@ -18,11 +18,17 @@ if [ -z "${GH_EMAIL}" ]; then
     echo "GH_EMAIL is not set"
     exit 1
 fi
+if [ -z "${GH_SSH_KEY}" ]; then
+    echo "GH_SSH_KEY is not set"
+    exit 1
+fi
 
 cd "$(mktemp -d)"
 dir_path="$(pwd)"
 trap "rm -rf ${dir_path}" EXIT
-git clone "${GH_REPOSITORY}" "repo"
+echo "${GH_SSH_KEY}" > ssh_key
+chmod 600 ssh_key
+GIT_SSH_COMMAND="ssh -i ${dir_path}/ssh_key" git clone "${GH_REPOSITORY}" "repo"
 cd "repo"
 
 git config user.name "${GH_USERNAME}"
@@ -51,7 +57,7 @@ do
     fi
 done
 
-git push origin HEAD
+GIT_SSH_COMMAND="ssh -i ${dir_path}/ssh_key" git push origin HEAD
 
 echo
 echo "Done ! Added ${commits} commits"
