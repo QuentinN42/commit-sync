@@ -36,6 +36,7 @@ todo="$(curl -s "https://gitlab.com/users/${GITLAB_USERNAME}/calendar.json" | jq
 already_done="$(git log --pretty='format:%s' | grep -E "^${PRE_COMMIT_MSG}" | sed "s/^${PRE_COMMIT_MSG}//")"
 
 export IFS=$'\n'
+commits=0
 for x in $todo;
 do
     echo "Processing ${x}"
@@ -44,5 +45,12 @@ do
         git add changes
         commit_date="$(date -d "$(echo "${x}" | cut -d- -f-3)" '+%Y-%m-%d %H:%M:%S')"
         GIT_COMMITTER_DATE="${commit_date}" git commit -s -m "${PRE_COMMIT_MSG}${x}" --date "${commit_date}"
+        commits=$((commits + 1))
     fi
 done
+
+git push origin HEAD
+
+echo
+echo "Done ! Added ${commits} commits"
+echo

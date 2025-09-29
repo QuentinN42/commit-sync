@@ -1,0 +1,26 @@
+name: Commit Sync
+
+on:
+  push:
+    branches:
+     - master
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight UTC
+
+jobs:
+  sync-commits:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+    - name: Run commit sync
+      env:
+        GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
+        REPOSITORY: ${{ secrets.REPOSITORY }}
+        GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+        GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}
+      run: ./script.sh
