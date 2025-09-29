@@ -23,4 +23,5 @@ jobs:
         GH_REPOSITORY: ${{ secrets.GH_REPOSITORY }}
         GH_USERNAME: ${{ secrets.GH_USERNAME }}
         GH_EMAIL: ${{ secrets.GH_EMAIL }}
+        GH_SSH_KEY: ${{ secrets.GH_SSH_KEY }}
       run: ./script.sh
