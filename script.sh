@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 if [ -z "${GL_USERNAME}" ]; then
     echo "GL_USERNAME is not set"
     exit 1
