@@ -23,6 +23,7 @@ The GitHub Action will:
    - `GH_REPOSITORY`: The Git repository URL to sync to (e.g., `https://github.com/username/repo.git`)
    - `GH_USERNAME`: Your GitHub username
    - `GH_EMAIL`: Your GitHub email address
+   - `GH_SSH_KEY`: Your GitHub SSH key
 
 ## Manual Usage
 
@@ -33,6 +34,7 @@ export GL_USERNAME="your-gitlab-username"
 export GH_REPOSITORY="https://github.com/username/repo.git"
 export GH_USERNAME="your-github-username"
 export GH_EMAIL="your-github-email@example.com"
+export GH_SSH_KEY="-----BEGIN RSA PRIVATE KEY-----..."
 
 ./script.sh
 ```
