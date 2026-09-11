@@ -7,7 +7,6 @@ This tool automatically creates commits on GitHub with dates matching your GitLa
 ## How it works
 
 The GitHub Action will:
-
 - Run automatically on every commit to main/master branch
 - Run daily at midnight UTC via scheduled cron job
 - Fetch your GitLab activity calendar
